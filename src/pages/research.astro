@@ -1,0 +1,47 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import BlogCard from '../components/BlogCard.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+
+const readingNotes = (await getCollection('blog', ({ data }) => !data.draft && data.category === 'Paper Reading'))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+---
+
+<BaseLayout title="Research" description="Research interests, research projects, publications, and paper reading notes.">
+  <section class="container page-hero">
+    <p class="eyebrow">Research</p>
+    <h1>科研兴趣</h1>
+    <p>用于展示研究方向、研究项目、论文产出和阅读记录，之后可以逐步替换成真实经历。</p>
+  </section>
+
+  <div class="container page-grid">
+    <aside class="side-note">建议将这里更新为你的研究问题、实验室方向或正在申请的领域。</aside>
+    <div>
+      <section class="page-section">
+        <SectionHeading title="Research Interests" />
+        <div class="grid grid-2">
+          <div class="info-block"><h3>Learning-based Robotics</h3><p>机器学习、控制和真实系统之间的接口。</p></div>
+          <div class="info-block"><h3>Scientific Machine Learning</h3><p>结合物理先验、数值方法和数据驱动模型。</p></div>
+        </div>
+      </section>
+
+      <section class="page-section">
+        <SectionHeading title="Research Projects" />
+        <p>占位：列出课题名称、时间、合作方、方法和阶段性结果。</p>
+      </section>
+
+      <section class="page-section">
+        <SectionHeading title="Publications" />
+        <p>占位：添加论文、预印本、海报、报告或课程研究项目。</p>
+      </section>
+
+      <section class="page-section">
+        <SectionHeading title="Reading Notes" description="自动链接到 blog 中 category 为 Paper Reading 的文章。" />
+        <div class="grid grid-2">
+          {readingNotes.map((post) => <BlogCard post={post} />)}
+        </div>
+      </section>
+    </div>
+  </div>
+</BaseLayout>

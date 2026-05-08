@@ -1,0 +1,48 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import Tag from '../components/Tag.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  date?: Date;
+  category?: string;
+  tags?: string[];
+}
+
+const { title, description, date, category, tags = [] } = Astro.props;
+const formattedDate = date?.toLocaleDateString('zh-CN', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric'
+});
+---
+
+<BaseLayout title={title} description={description}>
+  <article class="container article-shell">
+    <header class="article-header">
+      <div class="article-meta">
+        {formattedDate && <time datetime={date?.toISOString()}>{formattedDate}</time>}
+        {category && <span>{category}</span>}
+      </div>
+      <h1>{title}</h1>
+      <p>{description}</p>
+      {
+        tags.length > 0 && (
+          <div class="tag-list">
+            {tags.map((tag) => <Tag label={tag} />)}
+          </div>
+        )
+      }
+    </header>
+    <div class="article-layout">
+      <aside class="toc-placeholder" aria-label="Table of contents placeholder">
+        <p>目录</p>
+        <span>TOC extension space</span>
+      </aside>
+      <div class="prose">
+        <slot />
+      </div>
+    </div>
+  </article>
+</BaseLayout>

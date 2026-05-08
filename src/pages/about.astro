@@ -1,0 +1,64 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+---
+
+<BaseLayout title="About" description="About Your Name: education, interests, skills, and current work.">
+  <section class="container page-hero">
+    <p class="eyebrow">About</p>
+    <h1>关于我</h1>
+    <p>这里是一个可持续更新的个人背景页，用来组织学习经历、研究兴趣、技能栈和近期方向。</p>
+  </section>
+
+  <div class="container page-grid">
+    <aside class="side-note">把这里替换成你的学校、年级、实验室、导师或一句更具体的个人定位。</aside>
+    <div>
+      <section class="page-section">
+        <SectionHeading title="About Me" />
+        <p>我是 Your Name，一名理工科学生，关注 AI、机器人、科学计算和软件工具。我喜欢把课程、科研和工程项目整理成可复用的笔记与作品。</p>
+      </section>
+
+      <section class="page-section">
+        <SectionHeading title="Education" />
+        <div class="info-block">
+          <h3>Your University</h3>
+          <p>B.Eng. / B.Sc. in Your Major, 20XX - 20XX</p>
+          <p>Relevant focus: machine learning, control systems, algorithms, numerical methods.</p>
+        </div>
+      </section>
+
+      <section class="page-section">
+        <SectionHeading title="Interests" />
+        <ul>
+          <li>AI / Machine Learning for scientific and engineering problems</li>
+          <li>Robotics, control, embedded sensing, and autonomy</li>
+          <li>Scientific computing, simulation, and technical visualization</li>
+          <li>Developer tools and web-based learning tools</li>
+        </ul>
+      </section>
+
+      <section class="page-section">
+        <SectionHeading title="Skills" />
+        <div class="grid grid-3">
+          <div class="info-block">
+            <h3>Programming</h3>
+            <p>Python, C/C++, TypeScript, MATLAB, SQL</p>
+          </div>
+          <div class="info-block">
+            <h3>Tools</h3>
+            <p>Git, Linux, Docker, Jupyter, LaTeX, Astro</p>
+          </div>
+          <div class="info-block">
+            <h3>Domain Knowledge</h3>
+            <p>Machine learning, control, embedded systems, numerical analysis</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="page-section">
+        <SectionHeading title="What I’m Working On" />
+        <p>目前正在整理课程项目、论文阅读模板和可复现实验流程。之后可以在这里放实验室项目、毕业设计或实习方向。</p>
+      </section>
+    </div>
+  </div>
+</BaseLayout>

@@ -1,0 +1,31 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ButtonLink from '../components/ButtonLink.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+---
+
+<BaseLayout title="CV" description="Online CV for Your Name, including education, research, projects, skills, awards, and coursework.">
+  <section class="container page-hero">
+    <p class="eyebrow">CV</p>
+    <h1>在线简历</h1>
+    <p>这个页面是简历的网页版本，适合快速浏览；PDF 版本可放在 public/resume.pdf。</p>
+    <div class="button-row">
+      <ButtonLink href="/resume.pdf" download>Download PDF</ButtonLink>
+    </div>
+  </section>
+
+  <div class="container page-grid">
+    <aside class="side-note">替换为你的邮箱、GitHub、LinkedIn、Google Scholar、ORCID 等信息。</aside>
+    <div>
+      {['Education', 'Research Experience', 'Project Experience', 'Skills', 'Awards', 'Publications', 'Selected Coursework'].map((title) => (
+        <section class="page-section">
+          <SectionHeading title={title} />
+          <div class="info-block">
+            <h3>Placeholder Item</h3>
+            <p>20XX - 20XX · 在这里补充机构、角色、成果、技术栈和量化影响。</p>
+          </div>
+        </section>
+      ))}
+    </div>
+  </div>
+</BaseLayout>

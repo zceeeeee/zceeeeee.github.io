@@ -1,0 +1,32 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+
+const contacts = [
+  ['Email', 'your.email@example.com', 'mailto:your.email@example.com'],
+  ['GitHub', 'github.com/yourname', 'https://github.com/yourname'],
+  ['LinkedIn', 'linkedin.com/in/yourname', 'https://www.linkedin.com/in/yourname'],
+  ['Google Scholar', 'scholar.google.com', 'https://scholar.google.com'],
+  ['ORCID', 'orcid.org/0000-0000-0000-0000', 'https://orcid.org']
+];
+---
+
+<BaseLayout title="Contact" description="Contact Your Name for research collaboration, internships, and technical discussions.">
+  <section class="container page-hero">
+    <p class="eyebrow">Contact</p>
+    <h1>联系我</h1>
+    <p>I’m open to research collaboration, internship opportunities, and technical discussions.</p>
+  </section>
+
+  <section class="container section">
+    <SectionHeading title="Links" description="将占位链接替换为你的真实公开资料。" />
+    <div class="grid grid-2">
+      {contacts.map(([label, value, href]) => (
+        <a class="contact-card" href={href}>
+          <h3>{label}</h3>
+          <p>{value}</p>
+        </a>
+      ))}
+    </div>
+  </section>
+</BaseLayout>

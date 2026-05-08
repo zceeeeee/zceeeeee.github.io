@@ -1,0 +1,89 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import BlogCard from '../components/BlogCard.astro';
+import ButtonLink from '../components/ButtonLink.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+
+const projects = await getCollection('projects');
+const blog = await getCollection('blog', ({ data }) => !data.draft);
+const featuredProjects = projects
+  .filter((project) => project.data.featured)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, 3);
+const recentNotes = blog.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf()).slice(0, 3);
+
+const interests = [
+  ['AI / Machine Learning', '从模型理解、实验复现到面向真实问题的工具化应用。'],
+  ['Robotics / Control', '关注运动控制、感知决策和系统级工程实现。'],
+  ['Embedded Systems', '连接硬件、传感器、实时约束和可靠软件。'],
+  ['Scientific Computing', '使用数值方法、仿真和可视化理解复杂系统。'],
+  ['Web Tools', '构建清晰、低摩擦、可长期维护的研究与学习工具。']
+];
+---
+
+<BaseLayout title="Your Name" description="Engineering student portfolio, technical projects, research interests, notes, and CV.">
+  <section class="container hero">
+    <div>
+      <p class="eyebrow">Engineering Portfolio</p>
+      <h1>Your Name</h1>
+      <p>Engineering student interested in AI, robotics, scientific computing, and software tools.</p>
+      <div class="button-row">
+        <ButtonLink href="/projects">View Projects</ButtonLink>
+        <ButtonLink href="/resume.pdf" variant="secondary" download>Download CV</ButtonLink>
+      </div>
+    </div>
+    <aside class="hero-panel" aria-label="Profile summary">
+      <dl>
+        <div>
+          <dt>Current focus</dt>
+          <dd>Learning by building reproducible systems and writing technical notes.</dd>
+        </div>
+        <div>
+          <dt>Open to</dt>
+          <dd>Research collaboration, internship opportunities, and technical discussions.</dd>
+        </div>
+        <div>
+          <dt>Location</dt>
+          <dd>Update with your university, lab, or city.</dd>
+        </div>
+      </dl>
+    </aside>
+  </section>
+
+  <section class="container section">
+    <SectionHeading eyebrow="Interests" title="Research / Technical Interests" description="一个面向理工科成长路径的知识地图：既展示方向，也方便持续扩展。" />
+    <div class="grid grid-3">
+      {interests.map(([title, description]) => (
+        <article class="interest-card">
+          <h3>{title}</h3>
+          <p>{description}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="container section">
+    <SectionHeading eyebrow="Selected Work" title="Featured Projects" description="从 projects collection 中读取 featured 项目，适合放最能代表能力的作品。" />
+    <div class="grid grid-3">
+      {featuredProjects.map((project) => <ProjectCard project={project} />)}
+    </div>
+  </section>
+
+  <section class="container section">
+    <SectionHeading eyebrow="Knowledge Base" title="Recent Notes" description="最近的技术笔记、论文阅读和学习记录。" />
+    <div class="grid grid-3">
+      {recentNotes.map((post) => <BlogCard post={post} />)}
+    </div>
+  </section>
+
+  <section class="container section">
+    <SectionHeading eyebrow="Links" title="Find me online" />
+    <div class="link-list">
+      <a href="https://github.com/yourname">GitHub</a>
+      <a href="mailto:your.email@example.com">Email</a>
+      <a href="/cv">CV</a>
+    </div>
+  </section>
+</BaseLayout>

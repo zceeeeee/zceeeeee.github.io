@@ -1,0 +1,29 @@
+---
+import { getCollection } from 'astro:content';
+import MarkdownLayout from '../../layouts/MarkdownLayout.astro';
+
+export async function getStaticPaths() {
+  const projects = await getCollection('projects');
+  return projects.map((project) => ({
+    params: { slug: project.slug },
+    props: { project }
+  }));
+}
+
+const { project } = Astro.props;
+const { Content } = await project.render();
+---
+
+<MarkdownLayout
+  title={project.data.title}
+  description={project.data.description}
+  date={project.data.date}
+  category={project.data.category}
+  tags={project.data.tags}
+>
+  <div class="card-actions">
+    {project.data.github && <a href={project.data.github}>GitHub</a>}
+    {project.data.demo && <a href={project.data.demo}>Demo</a>}
+  </div>
+  <Content />
+</MarkdownLayout>

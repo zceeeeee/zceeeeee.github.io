@@ -1,0 +1,50 @@
+---
+import Tag from './Tag.astro';
+
+interface Props {
+  project: {
+    slug: string;
+    data: {
+      title: string;
+      description: string;
+      tags: string[];
+      category: string;
+      status: string;
+      github?: string;
+      demo?: string;
+      cover?: string;
+      featured?: boolean;
+    };
+  };
+}
+
+const { project } = Astro.props;
+const { data } = project;
+---
+
+<article class="card project-card">
+  {
+    data.cover && (
+      <a class="cover-link" href={`/projects/${project.slug}`} aria-label={`Open ${data.title}`}>
+        <img src={data.cover} alt={`${data.title} cover`} loading="lazy" />
+      </a>
+    )
+  }
+  <div class="card-content">
+    <div class="card-meta">
+      <span>{data.category}</span>
+      <span>{data.status}</span>
+      {data.featured && <span class="featured">Featured</span>}
+    </div>
+    <h3><a href={`/projects/${project.slug}`}>{data.title}</a></h3>
+    <p>{data.description}</p>
+    <div class="tag-list">
+      {data.tags.map((tag) => <Tag label={tag} />)}
+    </div>
+    <div class="card-actions">
+      <a href={`/projects/${project.slug}`}>详情</a>
+      {data.github && <a href={data.github}>GitHub</a>}
+      {data.demo && <a href={data.demo}>Demo</a>}
+    </div>
+  </div>
+</article>

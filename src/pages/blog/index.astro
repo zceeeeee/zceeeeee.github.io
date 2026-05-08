@@ -1,0 +1,24 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import BlogCard from '../../components/BlogCard.astro';
+import SectionHeading from '../../components/SectionHeading.astro';
+
+const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const categories = [...new Set(posts.map((post) => post.data.category))];
+---
+
+<BaseLayout title="Blog" description="Technical notes, study logs, paper reading, and engineering references.">
+  <section class="container page-hero">
+    <p class="eyebrow">Blog / Notes</p>
+    <h1>技术笔记</h1>
+    <p>这里是长期知识库：课程总结、工程踩坑、论文阅读和可复现实验记录。</p>
+  </section>
+
+  <section class="container section">
+    <SectionHeading title="All Notes" description={`共 ${posts.length} 篇，按时间倒序排列。分类：${categories.join(' / ')}`} />
+    <div class="grid grid-3">
+      {posts.map((post) => <BlogCard post={post} />)}
+    </div>
+  </section>
+</BaseLayout>

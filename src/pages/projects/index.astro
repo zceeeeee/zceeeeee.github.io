@@ -1,0 +1,28 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProjectCard from '../../components/ProjectCard.astro';
+import SectionHeading from '../../components/SectionHeading.astro';
+
+const projects = (await getCollection('projects')).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const categories = [...new Set(projects.map((project) => project.data.category))];
+---
+
+<BaseLayout title="Projects" description="Technical projects across AI, robotics, embedded systems, scientific computing, and web tools.">
+  <section class="container page-hero">
+    <p class="eyebrow">Projects</p>
+    <h1>项目作品集</h1>
+    <p>按方向组织的项目索引，展示问题背景、技术方法、结果和个人贡献。</p>
+  </section>
+
+  <section class="container section">
+    {categories.map((category) => (
+      <div class="category-group">
+        <SectionHeading title={category} description={`${projects.filter((project) => project.data.category === category).length} projects`} />
+        <div class="grid grid-3">
+          {projects.filter((project) => project.data.category === category).map((project) => <ProjectCard project={project} />)}
+        </div>
+      </div>
+    ))}
+  </section>
+</BaseLayout>
