@@ -3,6 +3,5 @@ import mdx from '@astrojs/mdx';
 
 export default defineConfig({
   integrations: [mdx()],
-  site: 'https://zceeeeee.github.io',
-  base: '/personal_web'
+  site: 'https://zceeeeee.github.io'
 });
