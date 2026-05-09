@@ -3,23 +3,20 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import SectionHeading from '../components/SectionHeading.astro';
 
 const contacts = [
-  ['Email', 'your.email@example.com', 'mailto:your.email@example.com'],
-  ['GitHub', 'github.com/yourname', 'https://github.com/yourname'],
-  ['LinkedIn', 'linkedin.com/in/yourname', 'https://www.linkedin.com/in/yourname'],
-  ['Google Scholar', 'scholar.google.com', 'https://scholar.google.com'],
-  ['ORCID', 'orcid.org/0000-0000-0000-0000', 'https://orcid.org']
+  ['Email', '12313231@mail.sustech.edu.cn', 'mailto:12313231@mail.sustech.edu.cn'],
+  ['GitHub', 'github.com/zceeeeee', 'https://github.com/zceeeeee']
 ];
 ---
 
-<BaseLayout title="Contact" description="Contact Your Name for research collaboration, internships, and technical discussions.">
+<BaseLayout title="Contact" description="联系朱成毅 / Max Zhu，讨论科研合作、实习机会和技术交流。">
   <section class="container page-hero">
     <p class="eyebrow">Contact</p>
     <h1>联系我</h1>
-    <p>I’m open to research collaboration, internship opportunities, and technical discussions.</p>
+    <p>I'm open to research collaboration, internship opportunities, and technical discussions.</p>
   </section>
 
   <section class="container section">
-    <SectionHeading title="Links" description="将占位链接替换为你的真实公开资料。" />
+    <SectionHeading title="Links" description="公开联系方式暂保留邮箱和 GitHub。" />
     <div class="grid grid-2">
       {contacts.map(([label, value, href]) => (
         <a class="contact-card" href={href}>

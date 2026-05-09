@@ -9,13 +9,13 @@ interface Props {
 }
 
 const { title, description } = Astro.props;
-const siteName = 'Your Name';
+const siteName = '朱成毅 / Max Zhu';
 const pageTitle = title === siteName ? title : `${title} | ${siteName}`;
 const canonical = new URL(Astro.url.pathname, Astro.site ?? Astro.url.origin);
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="zh-CN">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />

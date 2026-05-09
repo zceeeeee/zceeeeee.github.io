@@ -4,43 +4,71 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import BlogCard from '../components/BlogCard.astro';
 import SectionHeading from '../components/SectionHeading.astro';
 
-const readingNotes = (await getCollection('blog', ({ data }) => !data.draft && data.category === 'Paper Reading'))
+const readingNotes = (await getCollection('blog', ({ data }) => !data.draft && data.category === 'Research Notes'))
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+const projects = [
+  {
+    title: 'SAW-AlN 换能器仿真与测试',
+    description: '方向包括声表面波器件、AlN 换能器、COMSOL 仿真与测试分析。'
+  },
+  {
+    title: 'QLED / OLED / QD 发光器件制备与表征测试',
+    description: '方向包括发光器件制备、材料 / 器件表征与实验数据分析。'
+  }
+];
 ---
 
-<BaseLayout title="Research" description="Research interests, research projects, publications, and paper reading notes.">
+<BaseLayout title="Research" description="朱成毅 / Max Zhu 的研究兴趣：光电子器件、声表面波器件、发光器件制备与表征、器件仿真和实验测试。">
   <section class="container page-hero">
     <p class="eyebrow">Research</p>
     <h1>科研兴趣</h1>
-    <p>用于展示研究方向、研究项目、论文产出和阅读记录，之后可以逐步替换成真实经历。</p>
+    <p>我的研究兴趣集中在光电子器件、声表面波器件、发光器件制备与表征，以及器件仿真和实验测试流程。</p>
   </section>
 
   <div class="container page-grid">
-    <aside class="side-note">建议将这里更新为你的研究问题、实验室方向或正在申请的领域。</aside>
+    <aside class="side-note">这里先保留研究方向和项目概览，具体阶段结果、数据图表和公开信息可后续补充。</aside>
     <div>
       <section class="page-section">
         <SectionHeading title="Research Interests" />
         <div class="grid grid-2">
-          <div class="info-block"><h3>Learning-based Robotics</h3><p>机器学习、控制和真实系统之间的接口。</p></div>
-          <div class="info-block"><h3>Scientific Machine Learning</h3><p>结合物理先验、数值方法和数据驱动模型。</p></div>
+          <div class="info-block">
+            <h3>光电子与声表面波器件</h3>
+            <p>关注器件结构、材料属性、仿真建模、测试流程和实验数据解释。</p>
+          </div>
+          <div class="info-block">
+            <h3>发光器件制备与表征</h3>
+            <p>关注 QLED、OLED、QD 等发光器件的制备过程、表征测试与数据分析。</p>
+          </div>
         </div>
       </section>
 
       <section class="page-section">
         <SectionHeading title="Research Projects" />
-        <p>占位：列出课题名称、时间、合作方、方法和阶段性结果。</p>
+        <div class="grid grid-2">
+          {projects.map((project) => (
+            <div class="info-block">
+              <h3>{project.title}</h3>
+              <p>{project.description}</p>
+            </div>
+          ))}
+        </div>
       </section>
 
       <section class="page-section">
         <SectionHeading title="Publications" />
-        <p>占位：添加论文、预印本、海报、报告或课程研究项目。</p>
+        <p class="empty-state">论文、海报、报告或课程研究项目可在后续补充。</p>
       </section>
 
       <section class="page-section">
-        <SectionHeading title="Reading Notes" description="自动链接到 blog 中 category 为 Paper Reading 的文章。" />
-        <div class="grid grid-2">
-          {readingNotes.map((post) => <BlogCard post={post} />)}
-        </div>
+        <SectionHeading title="Reading Notes" description="后续可添加 COMSOL 仿真流程、器件测试记录和论文阅读笔记。" />
+        {readingNotes.length > 0 ? (
+          <div class="grid grid-2">
+            {readingNotes.map((post) => <BlogCard post={post} />)}
+          </div>
+        ) : (
+          <p class="empty-state">科研笔记暂未展开。</p>
+        )}
       </section>
     </div>
   </div>

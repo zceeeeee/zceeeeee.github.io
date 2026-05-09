@@ -15,45 +15,47 @@ const featuredProjects = projects
 const recentNotes = blog.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf()).slice(0, 3);
 
 const interests = [
-  ['AI / Machine Learning', '从模型理解、实验复现到面向真实问题的工具化应用。'],
-  ['Robotics / Control', '关注运动控制、感知决策和系统级工程实现。'],
-  ['Embedded Systems', '连接硬件、传感器、实时约束和可靠软件。'],
-  ['Scientific Computing', '使用数值方法、仿真和可视化理解复杂系统。'],
-  ['Web Tools', '构建清晰、低摩擦、可长期维护的研究与学习工具。']
+  ['光电子器件', '关注器件仿真、实验测试与表征分析，逐步建立从物理模型到实验数据的理解。'],
+  ['嵌入式系统', '围绕传感器、硬件接口、实时约束和系统调试，完成电子系统原型设计。'],
+  ['计算机视觉', '在课程项目和工程实践中使用视觉模块、图像处理和实验评估方法。'],
+  ['AI 工具应用', '将 AI 辅助工具用于工程记录、代码实现、数据整理和学习流程优化。'],
+  ['电子系统原型设计', '把课程、竞赛和科研训练中的想法落到可测试、可复盘的系统里。']
 ];
 ---
 
-<BaseLayout title="Your Name" description="Engineering student portfolio, technical projects, research interests, notes, and CV.">
+<BaseLayout title="朱成毅 / Max Zhu" description="南方科技大学电子系本科生，关注光电子器件、嵌入式系统、计算机视觉与 AI 工具应用。">
   <section class="container hero">
     <div>
       <p class="eyebrow">Engineering Portfolio</p>
-      <h1>Your Name</h1>
-      <p>Engineering student interested in AI, robotics, scientific computing, and software tools.</p>
+      <h1>朱成毅 / Max Zhu</h1>
+      <p>南方科技大学电子系本科生，关注光电子器件、嵌入式系统、计算机视觉与 AI 工具应用。</p>
       <div class="button-row">
         <ButtonLink href="/projects">View Projects</ButtonLink>
         <ButtonLink href="/resume.pdf" variant="secondary" download>Download CV</ButtonLink>
+        <ButtonLink href="https://github.com/zceeeeee" variant="ghost">GitHub</ButtonLink>
+        <ButtonLink href="mailto:12313231@mail.sustech.edu.cn" variant="ghost">Email</ButtonLink>
       </div>
     </div>
     <aside class="hero-panel" aria-label="Profile summary">
       <dl>
         <div>
-          <dt>Current focus</dt>
-          <dd>Learning by building reproducible systems and writing technical notes.</dd>
+          <dt>Current Identity</dt>
+          <dd>南方科技大学 2027 届本科生，电子系，光电信息与技术方向。</dd>
+        </div>
+        <div>
+          <dt>Current Focus</dt>
+          <dd>电子创新课程密室逃脱项目、嘉立创杯、电子设计竞赛与光电子器件相关科研训练。</dd>
         </div>
         <div>
           <dt>Open to</dt>
           <dd>Research collaboration, internship opportunities, and technical discussions.</dd>
-        </div>
-        <div>
-          <dt>Location</dt>
-          <dd>Update with your university, lab, or city.</dd>
         </div>
       </dl>
     </aside>
   </section>
 
   <section class="container section">
-    <SectionHeading eyebrow="Interests" title="Research / Technical Interests" description="一个面向理工科成长路径的知识地图：既展示方向，也方便持续扩展。" />
+    <SectionHeading eyebrow="Interests" title="Research / Technical Interests" description="围绕光电器件、嵌入式系统、计算机视觉和 AI 工具应用，持续积累课程项目、科研训练与工程实践经验。" />
     <div class="grid grid-3">
       {interests.map(([title, description]) => (
         <article class="interest-card">
@@ -65,24 +67,32 @@ const interests = [
   </section>
 
   <section class="container section">
-    <SectionHeading eyebrow="Selected Work" title="Featured Projects" description="从 projects collection 中读取 featured 项目，适合放最能代表能力的作品。" />
-    <div class="grid grid-3">
-      {featuredProjects.map((project) => <ProjectCard project={project} />)}
-    </div>
+    <SectionHeading eyebrow="Selected Work" title="Featured Projects" description="这里保留代表项目入口；具体项目细节可在后续补充时间、技术栈、个人贡献和结果展示。" />
+    {featuredProjects.length > 0 ? (
+      <div class="grid grid-3">
+        {featuredProjects.map((project) => <ProjectCard project={project} />)}
+      </div>
+    ) : (
+      <p class="empty-state">项目内容待补充。</p>
+    )}
   </section>
 
   <section class="container section">
-    <SectionHeading eyebrow="Knowledge Base" title="Recent Notes" description="最近的技术笔记、论文阅读和学习记录。" />
-    <div class="grid grid-3">
-      {recentNotes.map((post) => <BlogCard post={post} />)}
-    </div>
+    <SectionHeading eyebrow="Knowledge Base" title="Recent Notes" description="技术笔记可后续补充，例如 COMSOL 仿真流程、Maxicam2 项目复盘、GitHub Pages 部署记录。" />
+    {recentNotes.length > 0 ? (
+      <div class="grid grid-3">
+        {recentNotes.map((post) => <BlogCard post={post} />)}
+      </div>
+    ) : (
+      <p class="empty-state">博客与技术笔记暂未展开。</p>
+    )}
   </section>
 
   <section class="container section">
     <SectionHeading eyebrow="Links" title="Find me online" />
     <div class="link-list">
-      <a href="https://github.com/yourname">GitHub</a>
-      <a href="mailto:your.email@example.com">Email</a>
+      <a href="https://github.com/zceeeeee">GitHub</a>
+      <a href="mailto:12313231@mail.sustech.edu.cn">Email</a>
       <a href="/cv">CV</a>
     </div>
   </section>

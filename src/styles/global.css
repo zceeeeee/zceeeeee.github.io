@@ -405,6 +405,15 @@ a {
   padding-left: 20px;
 }
 
+.empty-state {
+  border: 1px dashed var(--color-border);
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.72);
+  color: var(--color-muted);
+  margin: 0;
+  padding: 18px 20px;
+}
+
 .category-group + .category-group {
   margin-top: 42px;
 }

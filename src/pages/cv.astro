@@ -4,28 +4,76 @@ import ButtonLink from '../components/ButtonLink.astro';
 import SectionHeading from '../components/SectionHeading.astro';
 ---
 
-<BaseLayout title="CV" description="Online CV for Your Name, including education, research, projects, skills, awards, and coursework.">
+<BaseLayout title="CV" description="朱成毅 / Max Zhu 的在线简历：教育、科研、项目、技能和课程。">
   <section class="container page-hero">
     <p class="eyebrow">CV</p>
     <h1>在线简历</h1>
-    <p>这个页面是简历的网页版本，适合快速浏览；PDF 版本可放在 public/resume.pdf。</p>
+    <p>这里是简历的网页版本；PDF 版本可放在 public/resume.pdf，并通过下方按钮下载。</p>
     <div class="button-row">
       <ButtonLink href="/resume.pdf" download>Download PDF</ButtonLink>
     </div>
   </section>
 
   <div class="container page-grid">
-    <aside class="side-note">替换为你的邮箱、GitHub、LinkedIn、Google Scholar、ORCID 等信息。</aside>
+    <aside class="side-note">Email: 12313231@mail.sustech.edu.cn<br />GitHub: github.com/zceeeeee</aside>
     <div>
-      {['Education', 'Research Experience', 'Project Experience', 'Skills', 'Awards', 'Publications', 'Selected Coursework'].map((title) => (
-        <section class="page-section">
-          <SectionHeading title={title} />
+      <section class="page-section">
+        <SectionHeading title="Education" />
+        <div class="info-block">
+          <h3>南方科技大学</h3>
+          <p>电子系，光电信息与技术方向，2027 届本科生。</p>
+        </div>
+      </section>
+
+      <section class="page-section">
+        <SectionHeading title="Research Experience" />
+        <div class="grid grid-2">
           <div class="info-block">
-            <h3>Placeholder Item</h3>
-            <p>20XX - 20XX · 在这里补充机构、角色、成果、技术栈和量化影响。</p>
+            <h3>SAW-AlN 换能器仿真与测试</h3>
+            <p>声表面波器件、AlN 换能器、COMSOL 仿真与测试分析。</p>
           </div>
-        </section>
-      ))}
+          <div class="info-block">
+            <h3>QLED / OLED / QD 发光器件制备与表征测试</h3>
+            <p>发光器件制备、材料 / 器件表征与实验数据分析。</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="page-section">
+        <SectionHeading title="Project Experience" />
+        <div class="info-block">
+          <h3>代表项目</h3>
+          <p>Maxicam2 视觉模块、SAW-AlN 换能器仿真与测试、嘉立创杯 / 电子设计竞赛项目。具体时间、技术栈、个人贡献和结果展示可后续补充。</p>
+        </div>
+      </section>
+
+      <section class="page-section">
+        <SectionHeading title="Skills" />
+        <div class="grid grid-3">
+          <div class="info-block">
+            <h3>Programming</h3>
+            <p>Python、Java、MATLAB、LaTeX</p>
+          </div>
+          <div class="info-block">
+            <h3>Tools</h3>
+            <p>Git、Linux、VS Code、Docker、Jupyter Notebook、COMSOL</p>
+          </div>
+          <div class="info-block">
+            <h3>Domains</h3>
+            <p>光电子器件、器件仿真与表征测试、信号处理、单片机 / 嵌入式系统、光学基础。</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="page-section">
+        <SectionHeading title="Selected Coursework" />
+        <ul>
+          <li>数字电子技术、模拟电子技术、固态电子学</li>
+          <li>半导体光学、液晶光电子学、激光原理</li>
+          <li>机器人运动与控制方法</li>
+          <li>Python、MATLAB、数据处理与仿真</li>
+        </ul>
+      </section>
     </div>
   </div>
 </BaseLayout>

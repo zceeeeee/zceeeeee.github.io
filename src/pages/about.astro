@@ -1,39 +1,57 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import SectionHeading from '../components/SectionHeading.astro';
+
+const coursework = [
+  ['电子与电路', '数字电子技术、模拟电子技术、固态电子学'],
+  ['光电与器件', '半导体光学、液晶光电子学、激光原理'],
+  ['控制与系统', '机器人运动与控制方法'],
+  ['计算与工具', 'Python、MATLAB、数据处理与仿真']
+];
 ---
 
-<BaseLayout title="About" description="About Your Name: education, interests, skills, and current work.">
+<BaseLayout title="About" description="关于朱成毅 / Max Zhu：教育经历、技术兴趣、技能和当前工作。">
   <section class="container page-hero">
     <p class="eyebrow">About</p>
     <h1>关于我</h1>
-    <p>这里是一个可持续更新的个人背景页，用来组织学习经历、研究兴趣、技能栈和近期方向。</p>
+    <p>我是朱成毅，南方科技大学电子系 2027 届本科生，专业方向为光电信息与技术。</p>
   </section>
 
   <div class="container page-grid">
-    <aside class="side-note">把这里替换成你的学校、年级、实验室、导师或一句更具体的个人定位。</aside>
+    <aside class="side-note">关注从器件仿真、实验测试到电子系统原型实现的完整工程流程。</aside>
     <div>
       <section class="page-section">
         <SectionHeading title="About Me" />
-        <p>我是 Your Name，一名理工科学生，关注 AI、机器人、科学计算和软件工具。我喜欢把课程、科研和工程项目整理成可复用的笔记与作品。</p>
+        <p>我是朱成毅，南方科技大学电子系 2027 届本科生，专业方向为光电信息与技术。我目前关注光电子器件、嵌入式系统、计算机视觉和 AI 工具应用，兴趣集中在从器件仿真、实验测试到电子系统原型实现的完整工程流程。我喜欢通过课程项目、科研训练和电子设计实践学习工程系统，并持续记录项目复盘、技术笔记和实验经验。</p>
       </section>
 
       <section class="page-section">
         <SectionHeading title="Education" />
         <div class="info-block">
-          <h3>Your University</h3>
-          <p>B.Eng. / B.Sc. in Your Major, 20XX - 20XX</p>
-          <p>Relevant focus: machine learning, control systems, algorithms, numerical methods.</p>
+          <h3>南方科技大学</h3>
+          <p>工学院 / 电子系，光电信息与技术方向，2027 届本科生。</p>
         </div>
       </section>
 
       <section class="page-section">
-        <SectionHeading title="Interests" />
+        <SectionHeading title="Relevant Coursework" />
+        <div class="grid grid-2">
+          {coursework.map(([title, detail]) => (
+            <div class="info-block">
+              <h3>{title}</h3>
+              <p>{detail}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section class="page-section">
+        <SectionHeading title="Technical Directions" />
         <ul>
-          <li>AI / Machine Learning for scientific and engineering problems</li>
-          <li>Robotics, control, embedded sensing, and autonomy</li>
-          <li>Scientific computing, simulation, and technical visualization</li>
-          <li>Developer tools and web-based learning tools</li>
+          <li>光电器件仿真与表征</li>
+          <li>嵌入式与电子系统原型设计</li>
+          <li>计算机视觉</li>
+          <li>AI 辅助工程工具</li>
         </ul>
       </section>
 
@@ -42,22 +60,22 @@ import SectionHeading from '../components/SectionHeading.astro';
         <div class="grid grid-3">
           <div class="info-block">
             <h3>Programming</h3>
-            <p>Python, C/C++, TypeScript, MATLAB, SQL</p>
+            <p>Python、Java、MATLAB、LaTeX</p>
           </div>
           <div class="info-block">
             <h3>Tools</h3>
-            <p>Git, Linux, Docker, Jupyter, LaTeX, Astro</p>
+            <p>Git、Linux、VS Code、Docker、Jupyter Notebook、COMSOL</p>
           </div>
           <div class="info-block">
             <h3>Domain Knowledge</h3>
-            <p>Machine learning, control, embedded systems, numerical analysis</p>
+            <p>光电子器件、器件仿真与表征测试、信号处理、单片机 / 嵌入式系统、光学基础。</p>
           </div>
         </div>
       </section>
 
       <section class="page-section">
-        <SectionHeading title="What I’m Working On" />
-        <p>目前正在整理课程项目、论文阅读模板和可复现实验流程。之后可以在这里放实验室项目、毕业设计或实习方向。</p>
+        <SectionHeading title="What I'm Working On" />
+        <p>目前正在推进电子创新课程密室逃脱项目中的 Maxicam2 视觉模块、嘉立创杯、电子设计竞赛，以及光电子器件相关科研训练。</p>
       </section>
     </div>
   </div>

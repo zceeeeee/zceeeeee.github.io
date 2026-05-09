@@ -8,17 +8,21 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort((a, 
 const categories = [...new Set(posts.map((post) => post.data.category))];
 ---
 
-<BaseLayout title="Blog" description="Technical notes, study logs, paper reading, and engineering references.">
+<BaseLayout title="Blog" description="朱成毅 / Max Zhu 的技术笔记、项目复盘和科研记录。">
   <section class="container page-hero">
     <p class="eyebrow">Blog / Notes</p>
     <h1>技术笔记</h1>
-    <p>这里是长期知识库：课程总结、工程踩坑、论文阅读和可复现实验记录。</p>
+    <p>博客与技术笔记暂时不展开具体内容，后续可补充 COMSOL 仿真流程、Maxicam2 项目复盘和 GitHub Pages 部署记录。</p>
   </section>
 
   <section class="container section">
-    <SectionHeading title="All Notes" description={`共 ${posts.length} 篇，按时间倒序排列。分类：${categories.join(' / ')}`} />
-    <div class="grid grid-3">
-      {posts.map((post) => <BlogCard post={post} />)}
-    </div>
+    <SectionHeading title="All Notes" description={posts.length > 0 ? `共 ${posts.length} 篇，分类：${categories.join(' / ')}` : '暂未发布笔记。'} />
+    {posts.length > 0 ? (
+      <div class="grid grid-3">
+        {posts.map((post) => <BlogCard post={post} />)}
+      </div>
+    ) : (
+      <p class="empty-state">技术笔记待补充。</p>
+    )}
   </section>
 </BaseLayout>

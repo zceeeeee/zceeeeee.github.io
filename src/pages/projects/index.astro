@@ -8,21 +8,25 @@ const projects = (await getCollection('projects')).sort((a, b) => b.data.date.va
 const categories = [...new Set(projects.map((project) => project.data.category))];
 ---
 
-<BaseLayout title="Projects" description="Technical projects across AI, robotics, embedded systems, scientific computing, and web tools.">
+<BaseLayout title="Projects" description="朱成毅 / Max Zhu 的代表项目：视觉模块、光电子器件仿真与测试、电子设计竞赛。">
   <section class="container page-hero">
     <p class="eyebrow">Projects</p>
     <h1>项目作品集</h1>
-    <p>按方向组织的项目索引，展示问题背景、技术方法、结果和个人贡献。</p>
+    <p>这里先保留代表项目入口。具体项目时间、技术栈、负责内容、结果截图或报告可后续逐步补充。</p>
   </section>
 
   <section class="container section">
-    {categories.map((category) => (
-      <div class="category-group">
-        <SectionHeading title={category} description={`${projects.filter((project) => project.data.category === category).length} projects`} />
-        <div class="grid grid-3">
-          {projects.filter((project) => project.data.category === category).map((project) => <ProjectCard project={project} />)}
+    {projects.length > 0 ? (
+      categories.map((category) => (
+        <div class="category-group">
+          <SectionHeading title={category} description={`${projects.filter((project) => project.data.category === category).length} projects`} />
+          <div class="grid grid-3">
+            {projects.filter((project) => project.data.category === category).map((project) => <ProjectCard project={project} />)}
+          </div>
         </div>
-      </div>
-    ))}
+      ))
+    ) : (
+      <p class="empty-state">项目内容待补充。</p>
+    )}
   </section>
 </BaseLayout>
