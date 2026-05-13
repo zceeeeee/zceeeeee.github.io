@@ -1,18 +1,15 @@
 ---
 import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
-import BlogCard from '../components/BlogCard.astro';
 import ButtonLink from '../components/ButtonLink.astro';
 import ProjectCard from '../components/ProjectCard.astro';
 import SectionHeading from '../components/SectionHeading.astro';
 
 const projects = await getCollection('projects');
-const blog = await getCollection('blog', ({ data }) => !data.draft);
 const featuredProjects = projects
   .filter((project) => project.data.featured)
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
   .slice(0, 3);
-const recentNotes = blog.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf()).slice(0, 3);
 
 const interests = [
   ['光电子器件', '关注器件仿真、实验测试与表征分析，逐步建立从物理模型到实验数据的理解。'],
@@ -33,8 +30,8 @@ const interests = [
         <ButtonLink href="/projects">View Projects</ButtonLink>
         <ButtonLink href="/resume.pdf" variant="secondary" download>Download CV</ButtonLink>
         <ButtonLink href="https://github.com/zceeeeee" variant="ghost">GitHub</ButtonLink>
-        <ButtonLink href="mailto:12313231@mail.sustech.edu.cn" variant="ghost">Email</ButtonLink>
       </div>
+      <p class="contact-line">Email: 12313231@mail.sustech.edu.cn</p>
     </div>
     <aside class="hero-panel" aria-label="Profile summary">
       <dl>
@@ -44,7 +41,7 @@ const interests = [
         </div>
         <div>
           <dt>Current Focus</dt>
-          <dd>电子创新课程密室逃脱项目、嘉立创杯、电子设计竞赛与光电子器件相关科研训练。</dd>
+          <dd>电子创新课程项目、嵌入式工具开发、科研绘图工具，以及光电子器件相关科研训练。</dd>
         </div>
         <div>
           <dt>Open to</dt>
@@ -67,32 +64,17 @@ const interests = [
   </section>
 
   <section class="container section">
-    <SectionHeading eyebrow="Selected Work" title="Featured Projects" description="这里保留代表项目入口；具体项目细节可在后续补充时间、技术栈、个人贡献和结果展示。" />
-    {featuredProjects.length > 0 ? (
-      <div class="grid grid-3">
-        {featuredProjects.map((project) => <ProjectCard project={project} />)}
-      </div>
-    ) : (
-      <p class="empty-state">项目内容待补充。</p>
-    )}
-  </section>
-
-  <section class="container section">
-    <SectionHeading eyebrow="Knowledge Base" title="Recent Notes" description="技术笔记可后续补充，例如 COMSOL 仿真流程、Maxicam2 项目复盘、GitHub Pages 部署记录。" />
-    {recentNotes.length > 0 ? (
-      <div class="grid grid-3">
-        {recentNotes.map((post) => <BlogCard post={post} />)}
-      </div>
-    ) : (
-      <p class="empty-state">博客与技术笔记暂未展开。</p>
-    )}
+    <SectionHeading eyebrow="Selected Work" title="Featured Projects" description="近期项目覆盖器件仿真与测试、嵌入式调试工具、科研数据处理与可视化。" />
+    <div class="grid grid-3">
+      {featuredProjects.map((project) => <ProjectCard project={project} />)}
+    </div>
   </section>
 
   <section class="container section">
     <SectionHeading eyebrow="Links" title="Find me online" />
     <div class="link-list">
       <a href="https://github.com/zceeeeee">GitHub</a>
-      <a href="mailto:12313231@mail.sustech.edu.cn">Email</a>
+      <span>12313231@mail.sustech.edu.cn</span>
       <a href="/cv">CV</a>
     </div>
   </section>

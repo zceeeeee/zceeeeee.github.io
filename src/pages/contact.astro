@@ -1,11 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import SectionHeading from '../components/SectionHeading.astro';
-
-const contacts = [
-  ['Email', '12313231@mail.sustech.edu.cn', 'mailto:12313231@mail.sustech.edu.cn'],
-  ['GitHub', 'github.com/zceeeeee', 'https://github.com/zceeeeee']
-];
 ---
 
 <BaseLayout title="Contact" description="联系朱成毅 / Max Zhu，讨论科研合作、实习机会和技术交流。">
@@ -16,14 +11,16 @@ const contacts = [
   </section>
 
   <section class="container section">
-    <SectionHeading title="Links" description="公开联系方式暂保留邮箱和 GitHub。" />
+    <SectionHeading title="Contact" description="欢迎通过邮箱或 GitHub 联系我。" />
     <div class="grid grid-2">
-      {contacts.map(([label, value, href]) => (
-        <a class="contact-card" href={href}>
-          <h3>{label}</h3>
-          <p>{value}</p>
-        </a>
-      ))}
+      <div class="contact-card">
+        <h3>Email</h3>
+        <p>12313231@mail.sustech.edu.cn</p>
+      </div>
+      <a class="contact-card" href="https://github.com/zceeeeee">
+        <h3>GitHub</h3>
+        <p>github.com/zceeeeee</p>
+      </a>
     </div>
   </section>
 </BaseLayout>

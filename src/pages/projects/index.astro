@@ -8,25 +8,21 @@ const projects = (await getCollection('projects')).sort((a, b) => b.data.date.va
 const categories = [...new Set(projects.map((project) => project.data.category))];
 ---
 
-<BaseLayout title="Projects" description="朱成毅 / Max Zhu 的代表项目：视觉模块、光电子器件仿真与测试、电子设计竞赛。">
+<BaseLayout title="Projects" description="朱成毅 / Max Zhu 的项目作品集：器件仿真、嵌入式工具、科研数据处理与可视化。">
   <section class="container page-hero">
     <p class="eyebrow">Projects</p>
     <h1>项目作品集</h1>
-    <p>这里先保留代表项目入口。具体项目时间、技术栈、负责内容、结果截图或报告可后续逐步补充。</p>
+    <p>这些项目记录了我在光电子器件仿真与测试、嵌入式调试工具、科研数据处理和可视化方向上的实践。</p>
   </section>
 
   <section class="container section">
-    {projects.length > 0 ? (
-      categories.map((category) => (
-        <div class="category-group">
-          <SectionHeading title={category} description={`${projects.filter((project) => project.data.category === category).length} projects`} />
-          <div class="grid grid-3">
-            {projects.filter((project) => project.data.category === category).map((project) => <ProjectCard project={project} />)}
-          </div>
+    {categories.map((category) => (
+      <div class="category-group">
+        <SectionHeading title={category} description={`${projects.filter((project) => project.data.category === category).length} projects`} />
+        <div class="grid grid-3">
+          {projects.filter((project) => project.data.category === category).map((project) => <ProjectCard project={project} />)}
         </div>
-      ))
-    ) : (
-      <p class="empty-state">项目内容待补充。</p>
-    )}
+      </div>
+    ))}
   </section>
 </BaseLayout>

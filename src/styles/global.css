@@ -249,6 +249,12 @@ a {
   padding-inline: 0;
 }
 
+.contact-line {
+  color: var(--color-muted);
+  font-size: 0.98rem;
+  margin-top: 16px;
+}
+
 .section {
   padding-block: 54px;
 }

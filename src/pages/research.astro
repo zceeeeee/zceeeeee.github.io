@@ -1,20 +1,15 @@
 ---
-import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
-import BlogCard from '../components/BlogCard.astro';
 import SectionHeading from '../components/SectionHeading.astro';
-
-const readingNotes = (await getCollection('blog', ({ data }) => !data.draft && data.category === 'Research Notes'))
-  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 
 const projects = [
   {
     title: 'SAW-AlN 换能器仿真与测试',
-    description: '方向包括声表面波器件、AlN 换能器、COMSOL 仿真与测试分析。'
+    description: '围绕 AlN 基 IDT 声表面波器件，结合 COMSOL 仿真与 VNA 测试，分析器件频率响应和探针结构对高频测量的影响。'
   },
   {
     title: 'QLED / OLED / QD 发光器件制备与表征测试',
-    description: '方向包括发光器件制备、材料 / 器件表征与实验数据分析。'
+    description: '关注发光器件制备、材料 / 器件表征与实验数据分析，训练从实验流程到结果解释的完整科研工作方式。'
   }
 ];
 ---
@@ -27,7 +22,7 @@ const projects = [
   </section>
 
   <div class="container page-grid">
-    <aside class="side-note">这里先保留研究方向和项目概览，具体阶段结果、数据图表和公开信息可后续补充。</aside>
+    <aside class="side-note">Research focus: optoelectronic devices, device simulation, RF measurement, and experimental data analysis.</aside>
     <div>
       <section class="page-section">
         <SectionHeading title="Research Interests" />
@@ -56,19 +51,17 @@ const projects = [
       </section>
 
       <section class="page-section">
-        <SectionHeading title="Publications" />
-        <p class="empty-state">论文、海报、报告或课程研究项目可在后续补充。</p>
-      </section>
-
-      <section class="page-section">
-        <SectionHeading title="Reading Notes" description="后续可添加 COMSOL 仿真流程、器件测试记录和论文阅读笔记。" />
-        {readingNotes.length > 0 ? (
-          <div class="grid grid-2">
-            {readingNotes.map((post) => <BlogCard post={post} />)}
+        <SectionHeading title="Methods & Tools" />
+        <div class="grid grid-2">
+          <div class="info-block">
+            <h3>Simulation</h3>
+            <p>使用 COMSOL 进行多物理场建模、特征频率分析和频域响应分析。</p>
           </div>
-        ) : (
-          <p class="empty-state">科研笔记暂未展开。</p>
-        )}
+          <div class="info-block">
+            <h3>Measurement</h3>
+            <p>结合 VNA、探针台和实验数据处理流程，分析器件响应与测试结构影响。</p>
+          </div>
+        </div>
       </section>
     </div>
   </div>

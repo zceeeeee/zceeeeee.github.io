@@ -8,7 +8,7 @@ import SectionHeading from '../components/SectionHeading.astro';
   <section class="container page-hero">
     <p class="eyebrow">CV</p>
     <h1>在线简历</h1>
-    <p>这里是简历的网页版本；PDF 版本可放在 public/resume.pdf，并通过下方按钮下载。</p>
+    <p>这里汇总我的教育背景、科研经历、项目经验和技术技能。</p>
     <div class="button-row">
       <ButtonLink href="/resume.pdf" download>Download PDF</ButtonLink>
     </div>
@@ -30,20 +30,26 @@ import SectionHeading from '../components/SectionHeading.astro';
         <div class="grid grid-2">
           <div class="info-block">
             <h3>SAW-AlN 换能器仿真与测试</h3>
-            <p>声表面波器件、AlN 换能器、COMSOL 仿真与测试分析。</p>
+            <p>围绕 AlN 基 IDT 声表面波器件，完成 COMSOL 建模、频域响应分析、VNA 测试和 GS/GSG 探针结构对比。</p>
           </div>
           <div class="info-block">
             <h3>QLED / OLED / QD 发光器件制备与表征测试</h3>
-            <p>发光器件制备、材料 / 器件表征与实验数据分析。</p>
+            <p>参与发光器件制备、材料 / 器件表征与实验数据分析，熟悉光电器件实验流程。</p>
           </div>
         </div>
       </section>
 
       <section class="page-section">
         <SectionHeading title="Project Experience" />
-        <div class="info-block">
-          <h3>代表项目</h3>
-          <p>Maxicam2 视觉模块、SAW-AlN 换能器仿真与测试、嘉立创杯 / 电子设计竞赛项目。具体时间、技术栈、个人贡献和结果展示可后续补充。</p>
+        <div class="grid grid-2">
+          <div class="info-block">
+            <h3>serial-scope</h3>
+            <p>面向 STM32、ESP32 和传感器调试的实时串口数据可视化工具，支持多通道曲线、原始日志和 CSV 导出。</p>
+          </div>
+          <div class="info-block">
+            <h3>scienceplots-chart-builder</h3>
+            <p>面向光谱、器件性能和 EL 数据的本地 Web 科研制图工具，支持交互式预览和多格式图表导出。</p>
+          </div>
         </div>
       </section>
 

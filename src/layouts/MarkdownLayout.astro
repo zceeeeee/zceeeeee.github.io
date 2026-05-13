@@ -36,9 +36,9 @@ const formattedDate = date?.toLocaleDateString('zh-CN', {
       }
     </header>
     <div class="article-layout">
-      <aside class="toc-placeholder" aria-label="Table of contents placeholder">
-        <p>目录</p>
-        <span>后续可接入自动目录。</span>
+      <aside class="toc-placeholder" aria-label="Project metadata">
+        <p>Project</p>
+        <span>{category}</span>
       </aside>
       <div class="prose">
         <slot />
