@@ -18,11 +18,28 @@ const interests = [
   ['AI 工具应用', '将 AI 辅助工具用于工程记录、代码实现、数据整理和学习流程优化。'],
   ['电子系统原型设计', '把课程、竞赛和科研训练中的想法落到可测试、可复盘的系统里。']
 ];
+
+const iconLinks = [
+  { href: '/about', label: '关于', image: '/about.png' },
+  { href: '/projects', label: '项目', image: '/project.png' },
+  { href: '/research', label: '科研', image: '/research.png' },
+  { href: '/cv', label: '简历', image: '/cv.png' },
+  { href: '/contact', label: '联系', image: '/email.png' }
+];
+
+const interestImages = [
+  '/Optoelectronic devices.png',
+  '/Embedded systems.png',
+  '/Computer vision.png',
+  null,
+  null
+];
 ---
 
 <BaseLayout title="朱成毅 / Max Zhu" description="南方科技大学电子系本科生，关注光电子器件、嵌入式系统、计算机视觉与 AI 工具应用。">
   <section class="container hero">
     <div>
+      <img class="hero-logo" src="/logo.png" alt="" width="112" height="112" />
       <p class="eyebrow">Engineering Portfolio</p>
       <h1>朱成毅 / Max Zhu</h1>
       <p>南方科技大学电子系本科生，关注光电子器件、嵌入式系统、计算机视觉与 AI 工具应用。</p>
@@ -51,11 +68,23 @@ const interests = [
     </aside>
   </section>
 
+  <section class="container icon-nav" aria-label="Quick links">
+    {
+      iconLinks.map((item) => (
+        <a class="icon-card" href={item.href}>
+          <img src={item.image} alt="" width="96" height="96" loading="lazy" />
+          <span>{item.label}</span>
+        </a>
+      ))
+    }
+  </section>
+
   <section class="container section">
     <SectionHeading eyebrow="Interests" title="Research / Technical Interests" description="围绕光电器件、嵌入式系统、计算机视觉和 AI 工具应用，持续积累课程项目、科研训练与工程实践经验。" />
     <div class="grid grid-3">
-      {interests.map(([title, description]) => (
+      {interests.map(([title, description], index) => (
         <article class="interest-card">
+          {interestImages[index] && <img class="card-illustration" src={interestImages[index]} alt="" width="88" height="88" loading="lazy" />}
           <h3>{title}</h3>
           <p>{description}</p>
         </article>
@@ -70,12 +99,19 @@ const interests = [
     </div>
   </section>
 
-  <section class="container section">
-    <SectionHeading eyebrow="Links" title="Find me online" />
-    <div class="link-list">
-      <a href="https://github.com/zceeeeee">GitHub</a>
-      <span>12313231@mail.sustech.edu.cn</span>
-      <a href="/cv">CV</a>
+  <section class="container section online-section">
+    <div class="online-layout">
+      <div class="online-copy">
+        <SectionHeading eyebrow="Links" title="Find me online" />
+        <div class="link-list">
+          <a href="https://github.com/zceeeeee">GitHub</a>
+          <span>12313231@mail.sustech.edu.cn</span>
+          <a href="/cv">CV</a>
+        </div>
+      </div>
+      <div class="link-visuals" aria-hidden="true">
+        <img src="/findmeonline.png" alt="" width="120" height="120" loading="lazy" />
+      </div>
     </div>
   </section>
 </BaseLayout>
